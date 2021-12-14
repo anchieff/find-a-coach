@@ -1,5 +1,5 @@
 <template>
-    <span :class="mode">
+    <span class="px-4 py-2 rounded-3xl text-white bg-purple-800">
         {{ text }}
     </span>
 </template>
