@@ -1,5 +1,12 @@
 <template>
-    <span class="px-4 py-2 rounded-3xl text-white bg-purple-800">
+    <span 
+        class="px-4 py-2 rounded-full text-sm text-white"
+        :class="{
+            'bg-purple-800': type == 'frontend',
+            'bg-yellow-500': type == 'career',
+            'bg-green-600': type == 'backend'
+        }"
+    >
         {{ text }}
     </span>
 </template>

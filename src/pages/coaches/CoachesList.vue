@@ -8,7 +8,7 @@
         <base-card>
             <div class="flex justify-end" >
                 <base-button class="mr-4">Refresh</base-button>
-                <base-button link to="/register">Register as Coach</base-button>
+                <base-button v-if="!isCoach" link to="/register">Register as Coach</base-button>
             </div>
             <ul class="list-none mt-10" v-if="hasCoaches">
                 <coach-item 
@@ -42,6 +42,9 @@ export default {
     },
     components: { CoachItem, CoachFilter },
     computed: {
+        isCoach() {
+            return this.$store.getters['coaches/isCoach']
+        },
         filteredCoaches() {
             const coaches = this.$store.getters['coaches/coaches']
             return coaches.filter(coach => {

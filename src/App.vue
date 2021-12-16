@@ -1,6 +1,10 @@
 <template>
     <the-header></the-header>
-    <router-view></router-view>
+    <hr/>
+    <div class="bg-gradient-to-b from-purple-50 to-white">
+        <router-view></router-view>
+    </div>
+    
 </template>
 
 <script>
@@ -22,6 +26,6 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Montserrat', sans-serif;
-    font-size: 18px;
+    font-size: 16px;
 }
 </style>

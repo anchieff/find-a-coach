@@ -1,14 +1,14 @@
 <template>
-    <header class="bg-gradient-to-r from-green-400 to-blue-500">
-        <nav class="flex justify-between py-4 px-6">
-            <h1 class="text-xl text-white">
+    <header class="container mx-auto">
+        <nav class="flex justify-between items-start py-4 px-6">
+            <h1 class="text-xl font-medium text-purple-900">
                 <router-link to="/">Find a Coach</router-link>
             </h1>
             <ul class="list-none flex ">
-                <li class="pr-4 text-white">
+                <li class="pr-4 ">
                     <router-link to="/coaches">All Coaches</router-link>
                 </li>
-                <li class="text-white">
+                <li>
                     <router-link to="/requests">Requests</router-link>
                 </li>
             </ul>
