@@ -1,18 +1,17 @@
 <template>
     <the-header></the-header>
-    <hr/>
-    <div class="bg-gradient-to-b from-purple-50 to-white">
+    <hr />
+    <div class="bg-gradient-to-b from-purple-50 to-white h-screen">
         <router-view></router-view>
     </div>
-    
 </template>
 
 <script>
 import TheHeader from './components/layout/TheHeader.vue'
 export default {
     components: {
-        TheHeader
-    }
+        TheHeader,
+    },
 }
 </script>
 

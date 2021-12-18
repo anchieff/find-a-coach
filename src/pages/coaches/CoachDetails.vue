@@ -11,7 +11,7 @@
                 <h2 class="font-medium text-xl mb-3">
                     Interested? Reach out now!
                 </h2>
-                <base-button mode="main" link :to="contactLink">
+                <base-button mode="secondary" link :to="coachContactLink">
                     Contact
                 </base-button>
             </header>
@@ -45,7 +45,7 @@ export default {
             return `${this.selectedCoach.firstName} ${this.selectedCoach.lastName}`
         },
         coachContactLink() {
-            return `${this.$route.path}/${this.id}/contact`
+            return `${this.$route.path}/contact`
         },
         rate() {
             return this.selectedCoach.hourlyRate
