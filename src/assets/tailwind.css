@@ -3,3 +3,28 @@
 @tailwind components;
 
 @tailwind utilities;
+
+@layer components {
+    .btn-secondary {
+        @apply bg-purple-100 border-purple-100 text-purple-700 hover:bg-purple-200 hover:border-purple-200 transition-all
+    }
+    .btn-primary {
+        @apply border-green-600 text-green-800 hover:bg-green-600 hover:text-white transition-all
+    }
+    .form-label {
+        @apply
+        block mb-1 font-medium
+    }
+    .form-input {
+        @apply
+        border rounded border-gray-300 w-full px-1 py-2 focus:border-blue-300 outline-none
+    }
+    .error-input {
+        @apply
+        border-2 border-red-600
+    }
+    .error-label {
+        @apply
+        text-red-600
+    }
+}

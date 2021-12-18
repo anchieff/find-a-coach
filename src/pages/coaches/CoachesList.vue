@@ -7,10 +7,10 @@
     <section class="container mx-auto">
         <base-card>
             <div class="flex justify-end" >
-                <base-button class="mr-4">Refresh</base-button>
-                <base-button v-if="!isCoach" link to="/register">Register as Coach</base-button>
+                <base-button mode="main" class="mr-4">Refresh</base-button>
+                <base-button mode="secondary" v-if="!isCoach" link to="/register">Register as Coach</base-button>
             </div>
-            <ul class="list-none mt-10" v-if="hasCoaches">
+            <ul class="list-none mt-7" v-if="hasCoaches">
                 <coach-item 
                     v-for="coach in filteredCoaches" 
                     :key="coach.id"

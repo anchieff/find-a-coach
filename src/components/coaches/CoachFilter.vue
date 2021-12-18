@@ -1,17 +1,17 @@
 <template>
     <base-card>
-        <h2>Find Your Coach</h2>
-        <span>
+        <h2 class="font-medium text-xl mb-2">Find Your Coach</h2>
+        <span class="mr-2">
             <input type="checkbox" id="frontend" checked @change="setFilters"/>
-            <label for="frontend">Frontend</label>
+            <label for="frontend" class="text-l ml-1">Frontend</label>
         </span>
-        <span>
+        <span class="mr-2">
             <input type="checkbox" id="backend" checked @change="setFilters"/>
-            <label for="backend">Backend</label>
+            <label for="backend" class="text-l ml-1">Backend</label>
         </span>
         <span>
             <input type="checkbox" id="career" checked @change="setFilters"/>
-            <label for="career">Career</label>
+            <label for="career" class="text-l ml-1">Career</label>
         </span>
     </base-card>
 </template>

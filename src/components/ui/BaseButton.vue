@@ -1,8 +1,23 @@
 <template>
-    <button v-if="!link" class="border-solid border-2 rounded px-5 font-medium">
+    <button 
+        v-if="!link" 
+        class="border-solid border-2 rounded px-5 py-2 font-medium"
+        :class="{
+            'btn-secondary': mode === 'secondary',
+            'btn-primary': mode === 'main'
+        }"
+    >
         <slot></slot>
     </button>
-    <router-link v-else :to="to" class="border-solid border-2 rounded px-5 py-2 font-medium">
+    <router-link 
+        v-else 
+        :to="to" 
+        class="border-solid border-2 rounded px-5 py-2 font-medium"
+        :class="{
+            'btn-secondary': mode === 'secondary',
+            'btn-primary': mode === 'main'
+        }"
+    >
         <slot></slot>
     </router-link>
 </template>
