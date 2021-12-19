@@ -1,4 +1,7 @@
 <template>
+    <base-dialog :show="!!error" title="An error occured!" @close="handleError">
+        {{ error }}
+    </base-dialog>
     <section class="container mx-auto py-4">
         <coach-filter @change-filter="setFilters"></coach-filter>
     </section>
@@ -8,11 +11,18 @@
                 <base-button mode="secondary" class="mr-4" @click="loadCoaches">
                     Refresh
                 </base-button>
-                <base-button mode="main" v-if="!isCoach" link to="/register"
+                <base-button
+                    mode="main"
+                    v-if="!isCoach && !isLoading"
+                    link
+                    to="/register"
                     >Register as Coach</base-button
                 >
             </div>
-            <ul class="list-none mt-7" v-if="hasCoaches">
+            <div v-if="isLoading">
+                <base-spinner></base-spinner>
+            </div>
+            <ul class="list-none mt-7" v-else-if="hasCoaches">
                 <coach-item
                     v-for="coach in filteredCoaches"
                     :key="coach.id"
@@ -35,6 +45,8 @@ import CoachFilter from '../../components/coaches/CoachFilter.vue'
 export default {
     data() {
         return {
+            isLoading: false,
+            error: null,
             activeFilters: {
                 frontend: true,
                 backend: true,
@@ -49,7 +61,7 @@ export default {
         },
         filteredCoaches() {
             const coaches = this.$store.getters['coaches/coaches']
-            return coaches.filter((coach) => {
+            return coaches.filter(coach => {
                 if (
                     this.activeFilters.frontend &&
                     coach.areas.includes('frontend')
@@ -72,15 +84,25 @@ export default {
             })
         },
         hasCoaches() {
-            return this.$store.getters['coaches/hasCoaches']
+            return !this.isLoading && this.$store.getters['coaches/hasCoaches']
         },
     },
     methods: {
         setFilters(updatedFilters) {
             this.activeFilters = updatedFilters
         },
-        loadCoaches() {
-            this.$store.dispatch('coaches/loadCoaches')
+        async loadCoaches() {
+            this.isLoading = true
+            try {
+                await this.$store.dispatch('coaches/loadCoaches')
+            } catch (error) {
+                this.error = error.message || 'Something went wrong!'
+            }
+
+            this.isLoading = false
+        },
+        handleError() {
+            this.error = null
         },
     },
     created() {
