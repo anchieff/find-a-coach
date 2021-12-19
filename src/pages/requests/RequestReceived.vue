@@ -1,28 +1,34 @@
 <template>
-    <base-dialog :show="!!error" title="An error occured!" @close="handleError">
-        {{ error }}
-    </base-dialog>
-    <section class="pt-8">
-        <base-card>
-            <header>
-                <h2 class="font-medium text-xl mb-3">Request Received</h2>
-            </header>
-            <div v-if="isLoading">
-                <base-spinner></base-spinner>
-            </div>
-            <ul v-else-if="hasRequests && !isLoading">
-                <request-item
-                    v-for="request in receivedRequests"
-                    :key="request.id"
-                    :email="request.userEmail"
-                    :message="request.message"
-                ></request-item>
-            </ul>
-            <h3 v-else class="font-medium">
-                You haven't received any request yet!
-            </h3>
-        </base-card>
-    </section>
+    <div>
+        <base-dialog
+            :show="!!error"
+            title="An error occured!"
+            @close="handleError"
+        >
+            {{ error }}
+        </base-dialog>
+        <section class="pt-8">
+            <base-card>
+                <header>
+                    <h2 class="font-medium text-xl mb-3">Request Received</h2>
+                </header>
+                <div v-if="isLoading">
+                    <base-spinner></base-spinner>
+                </div>
+                <ul v-else-if="hasRequests && !isLoading">
+                    <request-item
+                        v-for="request in receivedRequests"
+                        :key="request.id"
+                        :email="request.userEmail"
+                        :message="request.message"
+                    ></request-item>
+                </ul>
+                <h3 v-else class="font-medium">
+                    You haven't received any request yet!
+                </h3>
+            </base-card>
+        </section>
+    </div>
 </template>
 
 <script>
