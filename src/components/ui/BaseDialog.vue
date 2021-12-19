@@ -2,12 +2,12 @@
     <teleport to="body">
         <div v-if="show" @click="tryClose" class="backdrop"></div>
         <dialog open v-if="show">
-            <header>
+            <header class="bg-purple-800 text-white w-full p-4">
                 <slot name="header">
                     <h2 class="text-2xl mb-3 font-medium">{{ title }}</h2>
                 </slot>
             </header>
-            <section>
+            <section class="p-4">
                 <slot></slot>
             </section>
             <menu v-if="!fixed">
@@ -74,17 +74,6 @@ dialog {
     margin: 0;
     overflow: hidden;
     background-color: white;
-}
-
-header {
-    background-color: #3a0061;
-    color: white;
-    width: 100%;
-    padding: 1rem;
-}
-
-section {
-    padding: 1rem;
 }
 
 menu {
