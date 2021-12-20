@@ -1,21 +1,23 @@
 <template>
-    <button 
-        v-if="!link" 
+    <button
+        v-if="!link"
         class="border-solid border-2 rounded px-5 py-2 font-medium"
         :class="{
             'btn-secondary': mode === 'secondary',
-            'btn-primary': mode === 'main'
+            'btn-primary': mode === 'main',
+            'btn-flat': mode === 'flat',
         }"
     >
         <slot></slot>
     </button>
-    <router-link 
-        v-else 
-        :to="to" 
+    <router-link
+        v-else
+        :to="to"
         class="border-solid border-2 rounded px-5 py-2 font-medium"
         :class="{
             'btn-secondary': mode === 'secondary',
-            'btn-primary': mode === 'main'
+            'btn-primary': mode === 'main',
+            'btn-flat': mode === 'flat',
         }"
     >
         <slot></slot>
@@ -28,18 +30,18 @@ export default {
         mode: {
             type: String,
             required: false,
-            default: null
+            default: null,
         },
         link: {
             type: Boolean,
             required: false,
-            default: false
+            default: false,
         },
         to: {
             type: String,
             required: false,
-            default: '/'
-        }
-    }
+            default: '/',
+        },
+    },
 }
 </script>

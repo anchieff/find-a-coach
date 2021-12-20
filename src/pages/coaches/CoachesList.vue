@@ -21,8 +21,15 @@
                         Refresh
                     </base-button>
                     <base-button
+                        v-if="!isLoggedIn"
+                        link
+                        to="/auth?redirect=register"
                         mode="main"
-                        v-if="!isCoach && !isLoading"
+                        >Login to Register as a Coach</base-button
+                    >
+                    <base-button
+                        mode="main"
+                        v-if="isLoggedIn && !isCoach && !isLoading"
                         link
                         to="/register"
                         >Register as Coach</base-button
@@ -66,6 +73,9 @@ export default {
     },
     components: { CoachItem, CoachFilter },
     computed: {
+        isLoggedIn() {
+            return this.$store.getters.isAuthenticated
+        },
         isCoach() {
             return this.$store.getters['coaches/isCoach']
         },
